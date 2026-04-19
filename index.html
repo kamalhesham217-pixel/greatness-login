@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل المسابقة | عظمة وجلال مصر - المنيا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f0f2f0 0%, #e8e0d0 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            color: #1e3c2c;
+            font-size: 2rem;
+        }
+        .header h1 i {
+            color: #b87c4f;
+            margin-left: 10px;
+        }
+        .header p {
+            color: #5a4a3a;
+            margin-top: 0.5rem;
+        }
+        .form-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .form-title {
+            font-size: 1.5rem;
+            color: #1e3c2c;
+            border-right: 6px solid #b87c4f;
+            padding-right: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .input-group label {
+            font-weight: 600;
+            color: #2c4b32;
+        }
+        .input-group label i {
+            margin-left: 6px;
+            color: #b87c4f;
+        }
+        .input-group input, .input-group select {
+            padding: 12px 15px;
+            border: 2px solid #e2d5c0;
+            border-radius: 28px;
+            font-size: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.2s;
+            background: #fefaf5;
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #b87c4f;
+        }
+        .btn-submit {
+            background: #2a5a3a;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 1.5rem;
+            width: 100%;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .btn-submit:hover {
+            background: #1e3c2c;
+            transform: scale(1.01);
+        }
+        .message {
+            padding: 12px;
+            border-radius: 40px;
+            text-align: center;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .message.success {
+            background: #2a5a3a;
+            color: white;
+            display: block;
+        }
+        .message.error {
+            background: #c0392b;
+            color: white;
+            display: block;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #7f6b55;
+            font-size: 0.8rem;
+        }
+        .city-note {
+            font-size: 0.75rem;
+            color: #b87c4f;
+            margin-top: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-crown"></i> عظمة وجلال مصر 2026</h1>
+        <p>محافظة المنيا · سجل الآن في المسابقة الكبرى</p>
+    </div>
+
+    <div class="form-card">
+        <div class="form-title"><i class="fas fa-user-edit"></i> استمارة التسجيل</div>
+        <div id="messageBox" class="message"></div>
+        <form id="registrationForm">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label><i class="fas fa-user"></i> الاسم بالكامل</label>
+                    <input type="text" id="fullname" placeholder="مثال: أحمد محمد حسن" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-id-card"></i> الرقم القومي (14 رقم)</label>
+                    <input type="text" id="nationalId" placeholder="XXXXXXXXXXXXXX" maxlength="14" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-city"></i> المدينة / المركز</label>
+                    <select id="city" required>
+                        <option value="">اختر المدينة</option>
+                        <option value="المنيا">المنيا</option>
+                        <option value="أبو قرقاص">أبو قرقاص</option>
+                        <option value="ملوي">ملوي</option>
+                        <option value="دير مواس">دير مواس</option>
+                        <option value="مطاي">مطاي</option>
+                        <option value="سمالوط">سمالوط</option>
+                        <option value="مغاغة">مغاغة</option>
+                        <option value="العدوة">العدوة</option>
+                        <option value="بني مزار">بني مزار</option>
+                    </select>
+                    <div class="city-note"><i class="fas fa-map-marker-alt"></i> جميع مدن محافظة المنيا</div>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="email" placeholder="example@domain.com" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-phone-alt"></i> رقم الهاتف</label>
+                    <input type="tel" id="phone" placeholder="012XXXXXXXX" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-alt"></i> العمر</label>
+                    <input type="number" id="age" min="6" max="25" placeholder="مثال: 15" required>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-graduation-cap"></i> المرحلة التعليمية</label>
+                    <select id="educationLevel" required>
+                        <option value="">اختر المرحلة</option>
+                        <option value="ابتدائي">ابتدائي</option>
+                        <option value="إعدادي">إعدادي</option>
+                        <option value="ثانوي">ثانوي</option>
+                        <option value="أزهر">أزهر</option>
+                        <option value="تعليم فني">تعليم فني</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-check-circle"></i> سجل الآن في المسابقة</button>
+        </form>
+    </div>
+    <footer>
+        <i class="fas fa-heart" style="color:#b87c4f;"></i> مديرية التربية والتعليم بالمنيا · مسابقة عظمة وجلال مصر
+    </footer>
+</div>
+
+<script>
+    // مفتاح التخزين (نفس المفتاح عشان الادمن يقرأ نفس البيانات)
+    const STORAGE_KEY = "egypt_greatness_contest_minya";
+
+    function loadRegistrations() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if(stored) {
+            try {
+                return JSON.parse(stored);
+            } catch(e) { return []; }
+        }
+        return [];
+    }
+
+    function saveRegistrations(registrations) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(registrations));
+    }
+
+    function showMessage(msg, type) {
+        const msgDiv = document.getElementById("messageBox");
+        msgDiv.textContent = msg;
+        msgDiv.className = `message ${type}`;
+        setTimeout(() => {
+            msgDiv.className = "message";
+        }, 5000);
+    }
+
+    function validateNationalId(id) {
+        return /^\d{14}$/.test(id);
+    }
+
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const fullname = document.getElementById("fullname").value.trim();
+        const nationalId = document.getElementById("nationalId").value.trim();
+        const city = document.getElementById("city").value;
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const age = parseInt(document.getElementById("age").value);
+        const educationLevel = document.getElementById("educationLevel").value;
+
+        if(!fullname || !nationalId || !city || !email || !phone || !age || !educationLevel) {
+            showMessage("الرجاء ملء جميع الحقول", "error");
+            return;
+        }
+
+        if(!validateNationalId(nationalId)) {
+            showMessage("الرقم القومي يجب أن يتكون من 14 رقمًا", "error");
+            return;
+        }
+
+        if(age < 6 || age > 25) {
+            showMessage("العمر يجب أن يكون بين 6 و 25 سنة", "error");
+            return;
+        }
+
+        const registrations = loadRegistrations();
+        const existing = registrations.find(r => r.nationalId === nationalId);
+        if(existing) {
+            showMessage("هذا الرقم القومي مسجل مسبقاً في المسابقة!", "error");
+            return;
+        }
+
+        const newRecord = {
+            id: Date.now(),
+            fullname: fullname,
+            nationalId: nationalId,
+            city: city,
+            email: email,
+            phone: phone,
+            age: age,
+            educationLevel: educationLevel,
+            registeredAt: new Date().toLocaleString('ar-EG')
+        };
+
+        registrations.push(newRecord);
+        saveRegistrations(registrations);
+
+        document.getElementById("registrationForm").reset();
+        showMessage("✅ تم التسجيل بنجاح! تم إضافة بياناتك إلى المسابقة.", "success");
+    });
+</script>
+</body>
+</html>
